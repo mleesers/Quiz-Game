@@ -1,4 +1,4 @@
-/*correct = 0;
+correct = 0;
 wrong = 0;
 total = wrong + correct;
 highScore = 0;
@@ -24,7 +24,7 @@ function wrongAnswer(){
     window.alert("Incorrect!");
         wrong += 1;
         secondsLeft -= 10;
-}*/
+}
 function main(){
     console.log("start Button");
     question1();
@@ -41,14 +41,14 @@ function question1(){
         arr = ["empty","strings","booleans","alerts","numbers"]
         document.getElementById("answer" + i).innerHTML = arr[i]
     }
-    /*window.alert("Commonly used data types DO NOT Include ____. \n 1.strings, 2.booleans 3.alerts 4.numbers");
-    answer = window.prompt("Enter a number bewteen 1-4: ");
-    if(answer == 3){
-        correctAnswer();
-    }else{
-        wrongAnswer();
-    }
-    question2();*/
+    document.getElementById("answer1").addEventListener("click", wrongAnswer);
+    document.getElementById("answer2").addEventListener("click", wrongAnswer);
+    document.getElementById("answer3").addEventListener("click", correctAnswer);
+    document.getElementById("answer4").addEventListener("click", wrongAnswer);
+
+
+
+    //question2();
 }/*
 function question2(){
     window.alert("The condition in an if/else statement is enclosed within _____. \n 1.quotes, 2.curly brackets 3.parentheses 4.square brackets");
