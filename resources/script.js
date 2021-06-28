@@ -1,15 +1,17 @@
+timeEl = document.querySelector(".time")
 answer1 = document.getElementById("answer1");
 answer2 = document.getElementById("answer2");
 answer3 = document.getElementById("answer3");
 answer4 = document.getElementById("answer4");
 next = document.getElementById("next");
+start = document.getElementById("start");
+hideStart = document.querySelector(".card")
 
 correct = 0;
 wrong = 0;
 total = wrong + correct;
 highScore = 0;
 
-main();
 
 
 function timer(){
@@ -17,8 +19,12 @@ function timer(){
     timeInterval = setInterval(function(){
         console.log(secondsLeft);
         secondsLeft--;
+        timeEl.textContent = "Time: " + secondsLeft;
     },1000);
-    return secondsLeft;
+    console.log(secondsLeft);
+    if(secondsLeft == 0){
+        console.log("you ran out of time")
+    }
 }
 
 function correctAnswer(){
@@ -33,9 +39,8 @@ function wrongAnswer(){
     n = true;
 }
 function main(){
-    
-    question1();
     timer();
+    question1();
 }
 main();
 
