@@ -11,11 +11,10 @@ correct = 0;
 wrong = 0;
 total = wrong + correct;
 highScore = 0;
-
+secondsLeft = 60;
 
 
 function timer(){
-    secondsLeft = 60;
     timeInterval = setInterval(function(){
         console.log(secondsLeft);
         secondsLeft--;
@@ -28,12 +27,12 @@ function timer(){
 }
 
 function correctAnswer(){
-    window.alert("fine")
+    window.alert("correct")
     correct += 1;
     n = true;
 }
 function wrongAnswer(){
-    window.alert("not today")
+    window.alert("wrong")
     wrong += 1;
     secondsLeft -= 10;
     n = true;
@@ -44,25 +43,29 @@ function main(){
 }
 main();
 
-function question1(){
+function question1(event){
    document.getElementById("question").innerHTML = "Commonly used data types DO NOT Include ____.";
     for(i=1;i<=4;i++){
         arr = ["empty","strings","booleans","alerts","numbers"];
         document.getElementById("answer" + i).innerHTML = arr[i];
     }
     answer1.addEventListener("click", function() {
+        event.preventdefault();
         wrongAnswer();
         question2();
     });
     answer2.addEventListener("click", function() {
+        event.preventdefault();
         wrongAnswer();
         question2();
     });
     answer3.addEventListener("click", function() {
+        event.preventdefault();
         correctAnswer();
         question2();
     });
     answer4.addEventListener("click", function() {
+        event.preventdefault();
         wrongAnswer();
         question2();
     });
