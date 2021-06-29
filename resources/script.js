@@ -1,4 +1,5 @@
 timeEl = document.querySelector(".time")
+responseEl = document.querySelector(".response")
 answer1 = document.getElementById("answer1");
 answer2 = document.getElementById("answer2");
 answer3 = document.getElementById("answer3");
@@ -26,13 +27,15 @@ function timer(){
     }
 }
 
-function correctAnswer(){
-    window.alert("correct")
+function correctAnswer(event){
+    event.preventDefault();
+    responseEl.textContent = "Correct!"
     correct += 1;
     n = true;
 }
-function wrongAnswer(){
-    window.alert("wrong")
+function wrongAnswer(event){
+    event.preventDefault();
+    responseEl.textContent = "Wrong!"
     wrong += 1;
     secondsLeft -= 10;
     n = true;
@@ -50,26 +53,22 @@ function question1(event){
         document.getElementById("answer" + i).innerHTML = arr[i];
     }
     answer1.addEventListener("click", function() {
-        event.preventdefault();
         wrongAnswer();
-        question2();
+        event.preventDefault();
     });
     answer2.addEventListener("click", function() {
-        event.preventdefault();
         wrongAnswer();
-        question2();
+        event.preventDefault();
     });
     answer3.addEventListener("click", function() {
-        event.preventdefault();
         correctAnswer();
-        question2();
+        event.preventDefault();
     });
     answer4.addEventListener("click", function() {
-        event.preventdefault();
         wrongAnswer();
-        question2();
+        event.preventDefault();
     });
-}
+}/*
 function question2(){
     document.getElementById("question").innerHTML = "The condition in an if/else statement is enclosed within _____.";
     for(i=1;i<=4;i++){
@@ -84,7 +83,7 @@ function question2(){
     
     
 }
-/*
+
 function question3(){
     document.getElementById("question").innerHTML = "Arrays in JavaScript can be used to store ____.";
     for(i=1;i<=4;i++){
