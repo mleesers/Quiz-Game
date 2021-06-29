@@ -10,9 +10,19 @@ start = document.getElementById("start");
 correct = 0;
 wrong = 0;
 total = wrong + correct;
-highScore = 0;
 secondsLeft = 60;
+highScore = {
+    Name: "",
+    Score: ""
+}
 
+function timeOut(){
+
+}
+
+function questionDone(){
+    
+}
 
 function timer(){
     timeInterval = setInterval(function(){
@@ -22,7 +32,8 @@ function timer(){
     },1000);
     console.log(secondsLeft);
     if(secondsLeft == 0){
-        console.log("you ran out of time")
+        console.log("you ran out of time");
+        return;
     }
 }
 function correctAnswer(event){
