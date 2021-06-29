@@ -25,7 +25,6 @@ function timer(){
         console.log("you ran out of time")
     }
 }
-
 function correctAnswer(event){
     responseEl.textContent = "Correct!"
     correct += 1;
@@ -38,50 +37,60 @@ function wrongAnswer(event){
     n = true;
 }
 function main(){
-    document.querySelector(".card")
-    timer();
-    question1();
+    document.getElementById("start").addEventListener("click", function(){
+        document.querySelector(".quizStart").style.visibility = "hidden";
+        timer();
+        question1();
+    });
+    
 }
 main();
 
-function question1(event){
+
+function question1(){
    document.getElementById("question").innerHTML = "Commonly used data types DO NOT Include ____.";
     for(i=1;i<=4;i++){
         arr = ["empty","strings","booleans","alerts","numbers"];
-        document.getElementById("answer" + i).innerHTML = arr[i];
+        document.getElementById("answer" + i).innerHTML = i + "."  + arr[i];
     }
     answer1.addEventListener("click", function() {
         wrongAnswer();
-        event.preventDefault();
+        question2();
     });
     answer2.addEventListener("click", function() {
         wrongAnswer();
-        event.preventDefault();
+        question2();
     });
     answer3.addEventListener("click", function() {
         correctAnswer();
-        event.preventDefault();
+        question2();
     });
     answer4.addEventListener("click", function() {
         wrongAnswer();
-        event.preventDefault();
+        question2();
     });
-}/*
+}
 function question2(){
     document.getElementById("question").innerHTML = "The condition in an if/else statement is enclosed within _____.";
     for(i=1;i<=4;i++){
         arr = ["empty","quotes","curly brackets","parentheses","square brackets"]
         document.getElementById("answer" + i).innerHTML = arr[i]
     }
-    document.getElementById("answer1").addEventListener("click", wrongAnswer);
-    document.getElementById("answer2").addEventListener("click", correctAnswer);
-    document.getElementById("answer3").addEventListener("click", wrongAnswer);
-    document.getElementById("answer4").addEventListener("click", wrongAnswer);
-    document.getElementById("next").addEventListener("click", question3)
-    
+    document.getElementById("answer1").addEventListener("click", function(){
+        wrongAnswer();
+    });
+    document.getElementById("answer2").addEventListener("click", function() {
+        wrongAnswer();
+    });
+    document.getElementById("answer3").addEventListener("click", function(){
+        correctAnswer();
+    });
+    document.getElementById("answer4").addEventListener("click", function() {
+        wrongAnswer();
+    });
     
 }
-
+/*
 function question3(){
     document.getElementById("question").innerHTML = "Arrays in JavaScript can be used to store ____.";
     for(i=1;i<=4;i++){
