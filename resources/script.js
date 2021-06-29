@@ -5,7 +5,6 @@ answer2 = document.getElementById("answer2");
 answer3 = document.getElementById("answer3");
 answer4 = document.getElementById("answer4");
 next = document.getElementById("next");
-start = document.getElementById("start");
 
 correct = 0;
 wrong = 0;
@@ -17,10 +16,11 @@ highScore = {
 }
 
 function timeOut(){
-
+    document.querySelector(".card").style.visibility = "hidden";
+    end();
 }
 
-function questionDone(){
+function end(){
     
 }
 
@@ -32,8 +32,7 @@ function timer(){
     },1000);
     console.log(secondsLeft);
     if(secondsLeft == 0){
-        console.log("you ran out of time");
-        return;
+        timeOut();
     }
 }
 function correctAnswer(event){
