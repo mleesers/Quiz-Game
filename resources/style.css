@@ -7,18 +7,18 @@
 }
 
 
-
-
-
-
-
 .questions button{
-    background-color: rgb(133, 22, 133);
+    background-color: rgb(114, 49, 114);
+    padding: .5px;
     border: 1px solid white;
+    margin: 2px 1px;
     color:white;
     text-align: center;
     display: block;
     font-size:24px;
     border-radius: 5px;
 
+}
+.questions button:hover{
+    background-color: rgb(185, 127, 185);
 }

@@ -6,7 +6,6 @@ answer3 = document.getElementById("answer3");
 answer4 = document.getElementById("answer4");
 next = document.getElementById("next");
 start = document.getElementById("start");
-hideStart = document.querySelector(".card")
 
 correct = 0;
 wrong = 0;
@@ -28,19 +27,18 @@ function timer(){
 }
 
 function correctAnswer(event){
-    event.preventDefault();
     responseEl.textContent = "Correct!"
     correct += 1;
     n = true;
 }
 function wrongAnswer(event){
-    event.preventDefault();
     responseEl.textContent = "Wrong!"
     wrong += 1;
     secondsLeft -= 10;
     n = true;
 }
 function main(){
+    document.querySelector(".card")
     timer();
     question1();
 }
