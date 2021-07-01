@@ -9,7 +9,7 @@ initialSet = document.getElementById("initials");
 submitbut = document.getElementById("submit");
 
 
-document.getElementById("scorePage").addEventListener("click", scoreShow);
+document.querySelector(".highscore").addEventListener("click", scoreShow);
 
 function scoreSet(){
     highScore = {
@@ -33,6 +33,8 @@ function end(){
     document.getElementById("endDisplay").style.display = "block";
 }
 function scoreShow(){
+    renderScores();
+    document.querySelector(".quizStart").style.display = "none";
     document.getElementById("endDisplay").style.display = "none";
     document.getElementById("scorePage").style.display = "block";
 }
@@ -74,10 +76,11 @@ function main(){
     document.querySelector(".questions").style.display = "none";
     document.getElementById("endDisplay").style.display = "none";
     document.getElementById("scorePage").style.display = "none";
-    scoreSet();
+    
  
     document.getElementById("start").addEventListener("click", function(event){
         event.preventDefault();
+        scoreSet();
         document.querySelector(".quizStart").style.display = "none";
         timer();
         question1();
@@ -162,7 +165,7 @@ function question3(){
 }
 
 function question4(){
-    document.getElementById("question").innerHTML = "string values must be enclose within ____ when being assigned to variables."
+    document.getElementById("question").innerHTML = "String values must be enclose within ____ when being assigned to variables."
     for(i=1;i<=4;i++){
         arr = ["empty","commas","curly brackets","quotes","parentheses"]
         document.getElementById("answer" + i).innerHTML = arr[i]
