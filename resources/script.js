@@ -1,3 +1,5 @@
+
+
 timeEl = document.querySelector(".time")
 responseEl = document.querySelector(".response")
 answer1 = document.getElementById("answer1");
@@ -11,17 +13,23 @@ wrong = 0;
 total = wrong + correct;
 secondsLeft = 60;
 highScore = {
-    Name: "",
-    Score: ""
+    Initials: initials.value.trim(),
+    Score: correct
 }
-
+localStorage.setItem("highScore", JSON.stringify(highScore));
 function timeOut(){
     document.querySelector(".card").style.visibility = "hidden";
     end();
 }
 
 function end(){
-    
+    highScore1 = JSON.parse(localStorage.getItem("highScore"));
+    if (highScore1 !== null) {
+    document.getElementById("initialsPrint").innerHTML = highScore1.Initials;
+    document.getElementById("scorePrint").innerHTML = highScore1.Score;
+    }else {
+        return;
+  }
 }
 
 function timer(){
@@ -55,8 +63,7 @@ function main(){
     
 }
 main();
-
-
+end();
 function question1(){
    document.getElementById("question").innerHTML = "Commonly used data types DO NOT Include ____.";
     for(i=1;i<=4;i++){
