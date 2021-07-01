@@ -10,7 +10,7 @@
 
   <header>
         <h3 class="highscore">Highscores</h3>
-        <h3 class="time">Time: </h3>
+        <h3 class="time" >Time: </h3>
   </header>
   <body>
     <div class="card">
@@ -26,9 +26,25 @@
         <button id="answer3"></button>
         <button id="answer4"></button>
         <button id="next"></button>
-      </form>  
+      </form>
+      <form class="endDisplay">
+        <h1>All Done!</h2>
+        <p>Your Final Score is: </p>
+        <label>Enter Your Initials: </label>
+        <input type="text" id="initials" name="initials"><br><br>
+        <button type="submit">Submit</button>
+      </form>
+      <form>
+          <h1>Highscores</h1>
+          <p class="Highscores" id="initialsPrint"></p>
+          <p class="Highscores" id="scorePrint"></p>
+      </form>
+      <form class="timeOut">
+          <h1>You have run out of time</h1>
+          <button id="continue">Continue</button>
+      </form>
       <h2 class="response"></h2>
-    
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="resources/script.js"></script>
   </body>
 </html>
