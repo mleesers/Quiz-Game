@@ -9,7 +9,7 @@ initialSet = document.getElementById("initials");
 submitbut = document.getElementById("submit");
 
 
-
+secondsLeft = 60;
 correct = 0;
 wrong = 0;
 total = wrong + correct;
@@ -33,6 +33,7 @@ function renderScores(){
 
 function timeOut(){
     document.querySelector(".card").style.display = "none";
+    document.getElementById("timeOut").style.display = "block";
 }
 
  
@@ -46,10 +47,9 @@ submitbut.addEventListener("click", function(event){
 
 
 function timer(){
-    secondsLeft = 60;
     timeInterval = setInterval(function(){
         timeEl.textContent = "Time: " + secondsLeft;
-        if(secondsLeft === 0){
+        if(secondsLeft <= 0){
             clearInterval(timeInterval);
             timeOut();
         }else{
@@ -83,13 +83,12 @@ function main(){
     });
     
 }
-//end();
 main();
 
 
 function question1(){
     document.querySelector(".questions").style.display = "block";
-   document.getElementById("question").innerText = "Commonly used data types DO NOT Include ____.";
+    document.getElementById("question").innerText = "Commonly used data types DO NOT Include ____.";
     for(i=1;i<=4;i++){
         arr = ["empty","strings","booleans","alerts","numbers"];
         document.getElementById("answer" + i).innerHTML = i + "."  + arr[i];
@@ -119,19 +118,23 @@ function question2(){
     }
     document.getElementById("answer1").addEventListener("click", function(){
         wrongAnswer();
+        question3();
     });
     document.getElementById("answer2").addEventListener("click", function() {
         wrongAnswer();
+        question3();
     });
     document.getElementById("answer3").addEventListener("click", function(){
         correctAnswer();
+        question3();
     });
     document.getElementById("answer4").addEventListener("click", function() {
         wrongAnswer();
+        question3();
     });
     
 }
-/*
+
 
 function question3(){
     document.getElementById("question").innerHTML = "Arrays in JavaScript can be used to store ____.";
@@ -139,27 +142,70 @@ function question3(){
         arr = ["empty","numbers and strings","other arrays","booleans","all of the above"]
         document.getElementById("answer" + i).innerHTML = arr[i]
     }
+    document.getElementById("answer1").addEventListener("click", function(){
+        wrongAnswer();
+        question4();
+    });
+    document.getElementById("answer2").addEventListener("click", function() {
+        wrongAnswer();
+        question4();
+    });
+    document.getElementById("answer3").addEventListener("click", function(){
+        wrongAnswer();
+        question4();
+    });
+    document.getElementById("answer4").addEventListener("click", function() {
+        correctAnswer();
+        question4();
+    });
 }
 
 function question4(){
-    window.alert("string values must be enclose within ____ when being assigned to variables. \n 1.commas, 2.curly brackets 3.quotes 4.parentheses");
-    answer = window.prompt("Enter a number bewteen 1-4: ");
-    if(answer == 3){
-        correctAnswer();
-    }else{
-        wrongAnswer();
+    document.getElementById("question").innerHTML = "string values must be enclose within ____ when being assigned to variables."
+    for(i=1;i<=4;i++){
+        arr = ["empty","commas","curly brackets","quotes","parentheses"]
+        document.getElementById("answer" + i).innerHTML = arr[i]
     }
-    question5();
+    document.getElementById("answer1").addEventListener("click", function(){
+        wrongAnswer();
+        question5();
+    });
+    document.getElementById("answer2").addEventListener("click", function() {
+        wrongAnswer();
+        question5();
+    });
+    document.getElementById("answer3").addEventListener("click", function(){
+        correctAnswer();
+        question5();
+    });
+    document.getElementById("answer4").addEventListener("click", function() {
+        wrongAnswer();
+        question5();
+    });
 }
 
-function question5(){
-    window.alert("A very useful tool used during development and debugging for printing content to the debugger is: \n 1.JavaScript, 2.terminal/bash 3.for loops 4.console.log");
-    answer = window.prompt("Enter a number bewteen 1-4: ");
-    if(answer == 4){
-        correctAnswer();
-    }else{
-        wrongAnswer();
-    }
-}*/
 
-//init();
+function question5(){
+    document.getElementById("question").innerHTML = "A very useful tool used during development and debugging for printing content to the debugger is:"
+    for(i=1;i<=4;i++){
+        arr = ["empty","JavaScript","terminal/bash","for loops","console.log"]
+        document.getElementById("answer" + i).innerHTML = arr[i]
+    }
+    document.getElementById("answer1").addEventListener("click", function(){
+        correctAnswer();
+        question5();
+    });
+    document.getElementById("answer2").addEventListener("click", function() {
+        wrongAnswer();
+        question5();
+    });
+    document.getElementById("answer3").addEventListener("click", function(){
+        wrongAnswer();
+        question5();
+    });
+    document.getElementById("answer4").addEventListener("click", function() {
+        wrongAnswer();
+        question5();
+    });
+
+}
