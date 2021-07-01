@@ -9,10 +9,7 @@ initialSet = document.getElementById("initials");
 submitbut = document.getElementById("submit");
 
 
-secondsLeft = 60;
-correct = 0;
-wrong = 0;
-total = wrong + correct;
+document.getElementById("scorePage").addEventListener("click", scoreShow);
 
 function scoreSet(){
     highScore = {
@@ -31,59 +28,63 @@ function renderScores(){
         }
 }
 
-function timeOut(){
-    document.querySelector(".card").style.display = "none";
-    document.getElementById("timeOut").style.display = "block";
+function end(){
+    document.querySelector(".questions").style.display = "none";
+    document.getElementById("endDisplay").style.display = "block";
 }
-
- 
+function scoreShow(){
+    document.getElementById("endDisplay").style.display = "none";
+    document.getElementById("scorePage").style.display = "block";
+}
 submitbut.addEventListener("click", function(event){
     event.preventDefault();
-    document.getElementById("scorePage").style.display = "block";
     scoreSet();
     renderScores();
-
+    scoreShow();
 });
 
 
 function timer(){
+    secondsLeft = 60;
     timeInterval = setInterval(function(){
         timeEl.textContent = "Time: " + secondsLeft;
-        if(secondsLeft <= 0){
+        if(secondsLeft <= 0 || total == 5){
             clearInterval(timeInterval);
-            timeOut();
+            end();
         }else{
             secondsLeft--;
         }
     },1000);
   
 }
-function correctAnswer(event){
+function correctAnswer(){
     responseEl.textContent = "Correct!"
     correct += 1;
-    n = true;
 }
-function wrongAnswer(event){
+function wrongAnswer(){
     responseEl.textContent = "Wrong!"
     wrong += 1;
     secondsLeft -= 10;
-    n = true;
 }
 function main(){
+    correct = 0;
+    wrong = 0;
+    total = wrong + correct;
+
     document.querySelector(".questions").style.display = "none";
-    document.getElementById("timeOut").style.display = "none";
     document.getElementById("endDisplay").style.display = "none";
     document.getElementById("scorePage").style.display = "none";
     scoreSet();
+ 
     document.getElementById("start").addEventListener("click", function(event){
         event.preventDefault();
         document.querySelector(".quizStart").style.display = "none";
         timer();
         question1();
     });
-    
+    return correct,wrong,total;
 }
-main();
+
 
 
 function question1(){
@@ -93,19 +94,19 @@ function question1(){
         arr = ["empty","strings","booleans","alerts","numbers"];
         document.getElementById("answer" + i).innerHTML = i + "."  + arr[i];
     }
-    answer1.addEventListener("click", function() {
+    answer1.addEventListener("click", function(){
         wrongAnswer();
         question2();
     });
-    answer2.addEventListener("click", function() {
+    answer2.addEventListener("click", function(){
         wrongAnswer();
         question2();
     });
-    answer3.addEventListener("click", function() {
+    answer3.addEventListener("click", function(){
         correctAnswer();
         question2();
     });
-    answer4.addEventListener("click", function() {
+    answer4.addEventListener("click", function(){
         wrongAnswer();
         question2();
     });
@@ -120,7 +121,7 @@ function question2(){
         wrongAnswer();
         question3();
     });
-    document.getElementById("answer2").addEventListener("click", function() {
+    document.getElementById("answer2").addEventListener("click", function(){
         wrongAnswer();
         question3();
     });
@@ -128,7 +129,7 @@ function question2(){
         correctAnswer();
         question3();
     });
-    document.getElementById("answer4").addEventListener("click", function() {
+    document.getElementById("answer4").addEventListener("click", function(){
         wrongAnswer();
         question3();
     });
@@ -146,7 +147,7 @@ function question3(){
         wrongAnswer();
         question4();
     });
-    document.getElementById("answer2").addEventListener("click", function() {
+    document.getElementById("answer2").addEventListener("click", function(){
         wrongAnswer();
         question4();
     });
@@ -154,7 +155,7 @@ function question3(){
         wrongAnswer();
         question4();
     });
-    document.getElementById("answer4").addEventListener("click", function() {
+    document.getElementById("answer4").addEventListener("click", function(){
         correctAnswer();
         question4();
     });
@@ -170,7 +171,7 @@ function question4(){
         wrongAnswer();
         question5();
     });
-    document.getElementById("answer2").addEventListener("click", function() {
+    document.getElementById("answer2").addEventListener("click", function(){
         wrongAnswer();
         question5();
     });
@@ -178,7 +179,7 @@ function question4(){
         correctAnswer();
         question5();
     });
-    document.getElementById("answer4").addEventListener("click", function() {
+    document.getElementById("answer4").addEventListener("click", function(){
         wrongAnswer();
         question5();
     });
@@ -193,19 +194,16 @@ function question5(){
     }
     document.getElementById("answer1").addEventListener("click", function(){
         correctAnswer();
-        question5();
     });
-    document.getElementById("answer2").addEventListener("click", function() {
+    document.getElementById("answer2").addEventListener("click", function(){
         wrongAnswer();
-        question5();
     });
     document.getElementById("answer3").addEventListener("click", function(){
         wrongAnswer();
-        question5();
     });
-    document.getElementById("answer4").addEventListener("click", function() {
+    document.getElementById("answer4").addEventListener("click", function(){
         wrongAnswer();
-        question5();
     });
 
 }
+main();
