@@ -1,5 +1,3 @@
-
-
 timeEl = document.querySelector(".time")
 responseEl = document.querySelector(".response")
 answer1 = document.getElementById("answer1");
@@ -7,41 +5,58 @@ answer2 = document.getElementById("answer2");
 answer3 = document.getElementById("answer3");
 answer4 = document.getElementById("answer4");
 next = document.getElementById("next");
+initialSet = document.getElementById("initials");
+submitbut = document.getElementById("submit");
+
+
 
 correct = 0;
 wrong = 0;
 total = wrong + correct;
-secondsLeft = 60;
-highScore = {
-    Initials: initials.value.trim(),
-    Score: correct
-}
-localStorage.setItem("highScore", JSON.stringify(highScore));
-function timeOut(){
-    document.querySelector(".card").style.visibility = "hidden";
-    end();
-}
 
-function end(){
+function scoreSet(){
+    highScore = {
+        Initials: initialSet.value,
+        Score: correct
+    }
+    localStorage.setItem("highScore", JSON.stringify(highScore));
+}
+function renderScores(){
     highScore1 = JSON.parse(localStorage.getItem("highScore"));
     if (highScore1 !== null) {
-    document.getElementById("initialsPrint").innerHTML = highScore1.Initials;
-    document.getElementById("scorePrint").innerHTML = highScore1.Score;
-    }else {
-        return;
-  }
+        document.getElementById("initialsPrint").innerHTML = highScore1.Initials;
+        document.getElementById("scorePrint").innerHTML = highScore1.Score;
+        }else {
+            return;
+        }
 }
 
+function timeOut(){
+    document.querySelector(".card").style.display = "none";
+}
+
+ 
+submitbut.addEventListener("click", function(event){
+    event.preventDefault();
+    document.getElementById("scorePage").style.display = "block";
+    scoreSet();
+    renderScores();
+
+});
+
+
 function timer(){
+    secondsLeft = 60;
     timeInterval = setInterval(function(){
-        console.log(secondsLeft);
-        secondsLeft--;
         timeEl.textContent = "Time: " + secondsLeft;
+        if(secondsLeft === 0){
+            clearInterval(timeInterval);
+            timeOut();
+        }else{
+            secondsLeft--;
+        }
     },1000);
-    console.log(secondsLeft);
-    if(secondsLeft == 0){
-        timeOut();
-    }
+  
 }
 function correctAnswer(event){
     responseEl.textContent = "Correct!"
@@ -55,17 +70,26 @@ function wrongAnswer(event){
     n = true;
 }
 function main(){
-    document.getElementById("start").addEventListener("click", function(){
-        document.querySelector(".quizStart").style.visibility = "hidden";
+    document.querySelector(".questions").style.display = "none";
+    document.getElementById("timeOut").style.display = "none";
+    document.getElementById("endDisplay").style.display = "none";
+    document.getElementById("scorePage").style.display = "none";
+    scoreSet();
+    document.getElementById("start").addEventListener("click", function(event){
+        event.preventDefault();
+        document.querySelector(".quizStart").style.display = "none";
         timer();
         question1();
     });
     
 }
+//end();
 main();
-end();
+
+
 function question1(){
-   document.getElementById("question").innerHTML = "Commonly used data types DO NOT Include ____.";
+    document.querySelector(".questions").style.display = "block";
+   document.getElementById("question").innerText = "Commonly used data types DO NOT Include ____.";
     for(i=1;i<=4;i++){
         arr = ["empty","strings","booleans","alerts","numbers"];
         document.getElementById("answer" + i).innerHTML = i + "."  + arr[i];
@@ -108,6 +132,7 @@ function question2(){
     
 }
 /*
+
 function question3(){
     document.getElementById("question").innerHTML = "Arrays in JavaScript can be used to store ____.";
     for(i=1;i<=4;i++){
@@ -136,3 +161,5 @@ function question5(){
         wrongAnswer();
     }
 }*/
+
+//init();

@@ -14,32 +14,32 @@
   </header>
   <body>
     <div class="card">
-      <form class = "quizStart" >
+      <form class="quizStart" >
           <h1 class="beginning">Coding Quiz Challenge</h1>
           <p class="paragraph">Try to answer the following code related questions within the time limit. Keep in mind that incorrect answers will penalize your score time by ten seconds</p>
           <button id="start">Start</button>
       </form>
-      <form class="questions">
-        <h1 id="question"></h1>
+      <div class="questions">
+        <div id="question"></div>
         <button id="answer1"></button>
         <button id="answer2"></button>
         <button id="answer3"></button>
         <button id="answer4"></button>
-        <button id="next"></button>
-      </form>
-      <form class="endDisplay">
+      </div>
+      <form id="endDisplay">
         <h1>All Done!</h2>
         <p>Your Final Score is: </p>
         <label>Enter Your Initials: </label>
         <input type="text" id="initials" name="initials"><br><br>
-        <button type="submit">Submit</button>
+        <button type="submit" id="submit">Submit</button>
       </form>
-      <form>
+      <form id="scorePage">
           <h1>Highscores</h1>
           <p class="Highscores" id="initialsPrint"></p>
           <p class="Highscores" id="scorePrint"></p>
+          <button id="back">Back</button>
       </form>
-      <form class="timeOut">
+      <form id="timeOut">
           <h1>You have run out of time</h1>
           <button id="continue">Continue</button>
       </form>
